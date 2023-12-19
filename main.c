@@ -121,6 +121,28 @@ void timMaSVCoDiemTrenTam(sv* head){
 }
 
 
+void capNhatDiemMonHoc(sv* head){
+    struct SinhVien* current = head;
+    float diem;
+    int maSV;
+
+    printf("Nhap maSV:\n");
+    scanf("%d", &maSV);
+
+    printf("Nhap so diem muon cap nhat:\n");
+    scanf("%f", &diem);
+
+    while(current != NULL){
+        if(maSV == current->maSV){
+            printf("Cap nhat diem mon hoc cho sinh vien: %d\n", current->maSV);
+            current->diemMH = diem;
+        }
+
+        current = current->next;
+    }
+}
+
+
 int main(){
     sv SinhVienA = {123, "Nguyen A", 8.8};
     sv SinhVienB = {124, "Nguyen B", 9.7};
@@ -161,6 +183,10 @@ int main(){
     timSinhVienDiemCaoNhat(head);
 
     timMaSVCoDiemTrenTam(head);
+
+    capNhatDiemMonHoc(head);
+
+    displaySinhVien(head);
 
     return 0;
 }
